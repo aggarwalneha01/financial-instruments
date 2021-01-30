@@ -1,0 +1,36 @@
+
+table, th, td {
+  border: 1px solid black;
+  width: 550px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  margin: 25px 250px 50px 500px;
+}
+td, th{
+  padding: 2px;
+}
+
+.blueclass{
+  background-color:lightblue;
+}
+
+.whiteclass{
+  background-color: white;
+}
+
+.greenclass{
+    background-color:lightgreen;
+}
+
+.firstclass{
+  background-color: red;
+}
+
+.bluepriceclass{
+  color: blue;
+}
+.redpriceclass{
+  color:red ;
+  
+}
