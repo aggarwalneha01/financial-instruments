@@ -40,7 +40,7 @@ export default class Table extends React.Component {
         return this.sortByTicker(a, b);
     }
 
-    sortByAssetClass = (a, b) => {
+    sortData = (a, b) => {
         if (a.assetClass > b.assetClass) {
             return -1;
         }
@@ -53,7 +53,7 @@ export default class Table extends React.Component {
     getRowsData = () => {
       var items = this.props.data;
       items.sort((a, b) => {
-          return this.sortByAssetClass(a,b);
+          return this.sortData(a, b);
       });
       var keys = this.getKeys();
       return items.map((row, index)=>{
@@ -91,9 +91,9 @@ export default class Table extends React.Component {
 
 const RenderRow = (props) =>{
   return props.keys.map((key, index)=>{
-    let priceClass='';
-    if(key==='price'){
-        priceClass = (props.data[key] >=0) ? 'bluepriceclass': 'redpriceclass';
+    let priceClass = '';
+    if(key === 'price'){
+        priceClass = (props.data[key] >= 0) ? 'bluepriceclass': 'redpriceclass';
     }
     return <td key={props.data[key]} className={priceClass}>{props.data[key]}</td>
   })
