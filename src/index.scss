@@ -1,3 +1,8 @@
+$white: #fff;
+$green: #afe9bf;
+$red: #c43331;
+$blue: #90cbe9; 
+$dark-blue:#0000ff;
 
 table, th, td {
   border: 1px solid black;
@@ -5,32 +10,29 @@ table, th, td {
   height: 30px;
   top: 50%;
   left: 50%;
-  margin: 25px 250px 50px 500px;
+  margin: 25px 500px 50px 565px;
 }
 td, th{
   padding: 2px;
 }
 
 .blueclass{
-  background-color:lightblue;
+  background-color:$blue;
 }
 
 .whiteclass{
-  background-color: white;
+  background-color: $white;
 }
 
 .greenclass{
-    background-color:lightgreen;
+    background-color:$green;
 }
 
-.firstclass{
-  background-color: red;
-}
 
 .bluepriceclass{
-  color: blue;
+  color:$dark-blue;
 }
 .redpriceclass{
-  color:red ;
+  color:$red ;
   
 }
