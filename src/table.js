@@ -9,7 +9,7 @@ import React from 'react';
     const getHeader = (props) => {
       var keys = getKeys(props);
       return keys.map((key, index)=>{
-        return <th key={key}>{key.toUpperCase()}</th>
+        return <th key={index}>{key.toUpperCase()}</th>
       })
     }
 
@@ -87,7 +87,7 @@ const RenderRow = (props) =>{
     if(key === 'price'){
         priceClass = (props.data[key] >= 0) ? 'bluepriceclass': 'redpriceclass';
     }
-    return <td key={props.data[key]} className={priceClass}>{props.data[key]}</td>
+    return <td key={index} className={priceClass}>{props.data[key]}</td>
   })
 }
 
