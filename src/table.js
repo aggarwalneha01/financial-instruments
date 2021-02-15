@@ -1,26 +1,19 @@
 import React from 'react';
 
-export default class Table extends React.Component {
-    
-    constructor(props){
-      super(props);
-      this.getHeader = this.getHeader.bind(this);
-      this.getRowsData = this.getRowsData.bind(this);
-      this.getKeys = this.getKeys.bind(this);
-    }
+ const Table =(props) =>  {
 
-    getKeys = () => {
-      return Object.keys(this.props.data[0]);
+    const getKeys = (props) => {
+      return Object.keys(props.data[0]);
     }
     
-    getHeader = () => {
-      var keys = this.getKeys();
+    const getHeader = (props) => {
+      var keys = getKeys(props);
       return keys.map((key, index)=>{
-        return <th key={key}>{key.toUpperCase()}</th>
+        return <th key={index}>{key.toUpperCase()}</th>
       })
     }
 
-    sortByTicker = (a, b) => {
+    const sortByTicker = (a, b) => {
         if(a.ticker > b.ticker) {
             return 1;
         }
@@ -30,32 +23,32 @@ export default class Table extends React.Component {
         return 0;
     }
     
-    sortByPrice = (a, b)=> {
+    const sortByPrice = (a, b)=> {
         if(a.price < b.price) {
             return 1;
         }
         if (a.price > b.price) {
             return -1;
         }
-        return this.sortByTicker(a, b);
+        return sortByTicker(a, b);
     }
 
-    sortData = (a, b) => {
+    const sortData = (a, b) => {
         if (a.assetClass > b.assetClass) {
             return -1;
         }
         if (a.assetClass < b.assetClass) {
             return 1;
         }
-        return this.sortByPrice(a, b);
+        return  sortByPrice(a, b);
     }
 
-    getRowsData = () => {
-      var items = this.props.data;
+    const getRowsData = (props) => {
+      var items = props.data;
       items.sort((a, b) => {
-          return this.sortData(a, b);
+          return sortData(a, b);
       });
-      var keys = this.getKeys();
+      var keys = getKeys(props);
       return items.map((row, index)=>{
           let tableclass;
           if(items[index].assetClass==='Macro'){
@@ -72,21 +65,20 @@ export default class Table extends React.Component {
       })
     }
     
-    render() {
         return (
           <div >
             <table>
             <thead>
-              <tr>{this.getHeader()}</tr>
+              <tr>{getHeader(props)}</tr>
             </thead>
             <tbody>
-              {this.getRowsData()}
+              {getRowsData(props)}
             </tbody>
             </table>
           </div>
           
         );
-    }
+    
 }
 
 const RenderRow = (props) =>{
@@ -95,6 +87,9 @@ const RenderRow = (props) =>{
     if(key === 'price'){
         priceClass = (props.data[key] >= 0) ? 'bluepriceclass': 'redpriceclass';
     }
-    return <td key={props.data[key]} className={priceClass}>{props.data[key]}</td>
+    return <td key={index} className={priceClass}>{props.data[key]}</td>
   })
 }
+
+
+export default Table;
